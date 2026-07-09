@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>رحلتنا ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(135deg,#ffd7ec,#ffeaf5,#fff7fb);
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+}
+
+.hearts{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:1;
+
+}
+
+.heart{
+
+position:absolute;
+
+bottom:-30px;
+
+font-size:24px;
+
+animation:heartFloat linear forwards;
+
+opacity:.8;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+.intro{
+
+position:fixed;
+
+inset:0;
+
+background:url("https://i.ibb.co/HpnMggLd/IMG-20260619-WA0012.jpg") center/cover;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+z-index:9999;
+
+}
+
+.intro::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+}
+
+.intro h1{
+
+position:relative;
+
+color:#fff;
+
+font-size:45px;
+
+text-shadow:0 0 20px hotpink;
+
+margin-bottom:15px;
+
+}
+
+.intro p{
+
+position:relative;
+
+color:white;
+
+font-size:22px;
+
+margin-bottom:30px;
+
+}
+
+.startBtn{
+
+position:relative;
+
+padding:16px 35px;
+
+border:none;
+
+border-radius:40px;
+
+background:#ff2f87;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+
+.container{
+
+display:none;
+
+max-width:760px;
+
+margin:30px auto;
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(10px);
+
+padding:25px;
+
+border-radius:30px;
+
+box-shadow:0 10px 40px rgba(255,105,180,.25);
+
+position:relative;
+
+z-index:2;
+
+}
+
+.title{
+
+text-align:center;
+
+font-size:34px;
+
+font-weight:bold;
+
+color:#ff2f87;
+
+margin-bottom:25px;
+
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:15px;
+
+font-size:18px;
+
+text-align:center;
+
+outline:none;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:15px;
+
+background:#ff2f87;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.card{
+
+display:none;
+
+background:white;
+
+border-radius:25px;
+
+padding:15px;
+
+margin:25px 0;
+
+box-shadow:0 5px 20px rgba(255,105,180,.2);
+
+animation:fade .6s;
+
+}
+
+.card img,
+.card video{
+
+width:100%;
+
+border-radius:20px;
+
+}
+
+.card p{
+
+margin-top:18px;
+
+line-height:2;
+
+text-align:center;
+
+font-size:18px;
+
+color:#444;
+
+}
+
+.riddle{
+
+display:none;
+
+background:#fff3f8;
+
+padding:20px;
+
+border-radius:20px;
+
+margin:25px 0;
+
+text-align:center;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="intro" id="intro">
+
+<h1>Welcome My Love ❤️</h1>
+
+<p>Every moment with you is my favorite.</p>
+
+<button class="startBtn" onclick="openPassword()">
+
+ابدأ رحلتنا ❤️
+
+</button>
+
+</div>
+
+<div class="container" id="container">
+
+<div class="title">
+
+رحلتنا ❤️
+
+</div>
+
+<div id="passwordBox">
+
+<input
+id="password"
+type="password"
+placeholder="اكتبي الباسورد">
+
+<button onclick="checkPassword()">
+
+دخول ❤️
+
+</button>
+
+</div>
+
+<div id="journey" style="display:none;">
+<!-- اللغز الأول -->
+
+<div class="riddle" id="r1">
+
+<h2>🧩 اللغز الأول</h2>
+
+<p>
+
+تفتكري مين ممكن يكون أجمل منك؟ 😏❤️
+
+</p>
+
+<input
+id="a1"
+type="text"
+placeholder="اكتبي الإجابة">
+
+<button onclick="check1()">
+
+تأكيد ❤️
+
+</button>
+
+</div>
+
+<!-- الصورة الأولى -->
+
+<div class="card" id="c1">
+
+<img src="https://i.ibb.co/spJhTzM1/IMG-20260522-WA0003-1.jpg">
+
+<p>
+
+اليوم الجامد مع البت الجامدة ❤️<br><br>
+
+اتصورنا واتبسطنا وعملنا فيديوز وكان طرش الطرش ❤️❤️
+
+</p>
+
+</div>
+
+<!-- الفيديو الأول -->
+
+<div class="card" id="v1">
+
+<video controls>
+
+<source src="https://files.catbox.moe/s8rs2b.mp4" type="video/mp4">
+
+</video>
+
+<p>
+
+وردتي فعلاً أجمل منهم والله 😍❤️❤️❤️❤️
+
+</p>
+
+</div>
+
+<!-- اللغز الثاني -->
+
+<div class="riddle" id="r2">
+
+<h2>🧩 اللغز الثاني</h2>
+
+<p>
+
+إيه الكلمة اللي بتقوليها مكان "بحبك"؟ 😂❤️
+
+</p>
+
+<input
+id="a2"
+type="text"
+placeholder="اكتبي الإجابة">
+
+<button onclick="check2()">
+
+تأكيد ❤️
+
+</button>
+
+</div>
+<!-- الفيديو الثاني -->
+
+<div class="card" id="v2">
+
+<video controls>
+
+<source src="https://files.catbox.moe/xu2ke9.mp4" type="video/mp4">
+
+</video>
+
+<p>
+
+كنت قمر وانتي بتغني كدا وعالطول قمر خربيت جمال امك يشيخه 😋❤️❤️❤️❤️
+
+</p>
+
+</div>
+
+<!-- اللغز الثالث -->
+
+<div class="riddle" id="r3">
+
+<h2>🧩 اللغز الثالث</h2>
+
+<p>
+
+اكتر كلمة بقولهالك مؤخرًا؟ ❤️
+
+</p>
+
+<input
+id="a3"
+type="text"
+placeholder="اكتبي الإجابة">
+
+<button onclick="check3()">
+
+تأكيد ❤️
+
+</button>
+
+</div>
+
+<!-- الصورة الثانية -->
+
+<div class="card" id="c2">
+
+<img src="https://i.ibb.co/4nyfrFM2/IMG-20260619-WA0010.jpg">
+
+<p>
+
+بحبك اوي يحلوفه والله ❤️❤️🫂
+
+</p>
+
+</div>
+
+<!-- اللغز الرابع -->
+
+<div class="riddle" id="r4">
+
+<h2>🧩 اللغز الرابع</h2>
+
+<p>
+
+اي اكتر أكلة بحبها من إيديكي؟ 😍
+
+</p>
+
+<input
+id="a4"
+type="text"
+placeholder="اكتبي الإجابة">
+
+<button onclick="check4()">
+
+تأكيد ❤️
+
+</button>
+
+</div>
+<!-- فيديو الشاورما -->
+
+<div class="card" id="v3">
+
+<video controls>
+
+<source src="https://files.catbox.moe/ug5nmj.mp4" type="video/mp4">
+
+</video>
+
+<p>
+
+وهنا اجمل واحسن شاورما كلتها من ايد اجمل واحسن بنت عيني وقلبي شفوها وحبوها بحبك اوي ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️🫂
+
+</p>
+
+</div>
+
+<!-- الصورة الأخيرة -->
+
+<div class="card" id="c3">
+
+<img src="https://i.ibb.co/HpnMggLd/IMG-20260619-WA0012.jpg">
+
+<p>
+
+ربنا يخليكي ليا وميحرمنيش منك أبداً يا رب ❤️❤️❤️❤️
+
+</p>
+
+</div>
+
+<!-- الفيديو الأخير -->
+
+<div class="card" id="v4">
+
+<video controls>
+
+<source src="https://files.catbox.moe/sm66f8.mp4" type="video/mp4">
+
+</video>
+
+<p>
+
+بوست ايدك لحد مبوس... انتي فاهمة بقا 😂😂❤️❤️
+
+</p>
+
+</div>
+<button id="secretBtn"
+onclick="openSecret()"
+style="display:none;
+width:100%;
+padding:15px;
+background:#ff2e88;
+color:white;
+border:none;
+border-radius:15px;
+font-size:18px;
+margin:20px 0;
+cursor:pointer;">
+
+💌 لسه في حاجة مستخبية... دوسي هنا ❤️
+
+</button>
+<audio id="music" loop>
+
+<source src="https://files.catbox.moe/z6hx9p.mp3" type="audio/mpeg">
+
+</audio>
+
+</div>
+
+</div>
+<script>
+
+function openPassword(){
+
+document.getElementById("intro").style.display="none";
+document.getElementById("container").style.display="block";
+
+let music = document.getElementById("music");
+music.play();
+
+}
+
+function checkPassword(){
+
+let pass=document.getElementById("password").value.trim();
+
+if(pass==="دلوعتي"){
+
+document.getElementById("passwordBox").style.display="none";
+
+document.getElementById("journey").style.display="block";
+
+document.getElementById("r1").style.display="block";
+
+}else{
+
+alert("الباسورد غلط ❤️");
+
+}
+
+}
+function check1(){
+
+let v=document.getElementById("a1").value.trim();
+
+alert("الإجابة: " + v);
+
+if(
+v.includes("مفيش") ||
+v.includes("أكيد")
+){
+
+document.getElementById("c1").style.display="block";
+document.getElementById("v1").style.display="block";
+document.getElementById("r2").style.display="block";
+
+}else{
+
+alert("غلط يا وردتي 😂❤️");
+
+}
+
+}
+
+
+function check2(){
+
+let v=document.getElementById("a2").value.trim();
+
+if(
+v.includes("طظ")
+){
+
+document.getElementById("v2").style.display="block";
+document.getElementById("r3").style.display="block";
+
+}else{
+
+alert("غلط 😂❤️");
+
+}
+
+}
+
+function check3(){
+
+let v=document.getElementById("a3").value.trim();
+
+if(
+v.includes("يحلوفه")
+){
+
+document.getElementById("c2").style.display="block";
+document.getElementById("r4").style.display="block";
+
+}else{
+
+alert("غلط ❤️");
+
+}
+
+}
+
+function check4(){
+
+let v=document.getElementById("a4").value.trim();
+
+if(
+v.includes("شاورما")
+){
+
+document.getElementById("v3").style.display="block";
+document.getElementById("c3").style.display="block";
+document.getElementById("v4").style.display="block";
+document.getElementById("secretBtn").style.display="block";
+}else{
+
+alert("غلط 😋");
+
+}
+
+}
+function openSecret(){
+
+document.body.style.transition="1s";
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+
+document.body.innerHTML=`
+
+<style>
+
+.secretEnd{
+
+min-height:100vh;
+background:linear-gradient(135deg,#ffb6d9,#ffe8f3);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+font-family:Arial;
+overflow:hidden;
+}
+
+.boxEnd{
+
+background:white;
+padding:30px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 10px 40px #ff69b4;
+animation:pop .8s;
+}
+
+.boxEnd h1{
+
+color:#ff2e88;
+font-size:35px;
+
+}
+
+.boxEnd p{
+
+font-size:20px;
+line-height:2;
+color:#555;
+
+}
+
+@keyframes pop{
+
+0%{
+transform:scale(0) rotate(-15deg);
+opacity:0;
+}
+
+60%{
+transform:scale(1.1) rotate(5deg);
+}
+
+100%{
+transform:scale(1) rotate(0);
+opacity:1;
+}
+
+}
+
+.heartEnd{
+
+position:fixed;
+bottom:-20px;
+font-size:30px;
+animation:up 5s linear infinite;
+
+}
+
+@keyframes up{
+
+from{
+transform:translateY(0);
+opacity:1;
+}
+
+to{
+transform:translateY(-110vh);
+opacity:0;
+}
+
+}
+
+</style>
+
+
+<div class="secretEnd">
+
+<div class="boxEnd">
+
+<h1>
+✨ آخر لغز ✨
+</h1>
+
+<p>
+فاكرة إن الرحلة خلصت؟ ❤️
+
+<br>
+
+إيه أكتر حاجة نفسنا تحصل في المستقبل؟ 💍
+
+</p>
+
+
+<input id="lastAnswer"
+placeholder="اكتبي الإجابة">
+
+<button onclick="finishEnd()">
+
+إرسال ❤️
+
+</button>
+
+
+</div>
+
+</div>
+
+`;
+
+document.body.style.opacity="1";
+
+
+for(let i=0;i<30;i++){
+
+let h=document.createElement("div");
+
+h.className="heartEnd";
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(h);
+
+}
+
+
+},1000);
+
+}
+
+
+
+function finishEnd(){
+
+let ans=document.getElementById("lastAnswer").value.trim();
+
+if(ans.includes("جواز") || ans.includes("نتجوز")){
+
+let oldMusic=document.getElementById("music");
+let music = oldMusic ? oldMusic.cloneNode(true) : null;
+let savedStyle = document.querySelector("style").innerHTML;
+document.body.innerHTML=`
+
+<div style="
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#ffb6d9,#ffe8f3);
+font-family:Arial;
+padding:20px;
+overflow:hidden;
+">
+
+<div id="endCard" style="
+background:white;
+padding:35px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 10px 40px pink;
+animation:endPop 1s;
+">
+<h1 id="ring" style="color:#ff2e88;font-size:70px;">
+💍❤️
+</h1>
+
+
+<h2>رحلتنا خلصت... بس حكايتنا لسه بتبدأ ❤️</h2>
+
+<p style="font-size:20px;line-height:2">
+وعد مني أفضل أحبك كل يوم أكتر من اليوم اللي قبله ❤️
+<br><br>
+وإن شاء الله ييجي اليوم اللي ألبسك فيه الخاتم وأقول:
+<br><br>
+دي مراتي 💍❤️
+</p>
+
+<h2 style="color:#ff2e88">
+I Love You Forever ❤️
+</h2>
+
+<p id="typing" style="
+color:#ff2e88;
+font-size:22px;
+font-weight:bold;
+margin-top:20px;
+"></p>
+
+</div>
+
+</div>
+`;
+
+if(music){
+document.body.appendChild(music);
+music.loop=true;
+music.play();
+}
+
+i=0;
+document.getElementById("typing").innerHTML="";
+writeText();
+fireworks();
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.style.position="fixed";
+heart.style.left=Math.random()*100+"vw";
+heart.style.bottom="-40px";
+heart.style.fontSize=(25+Math.random()*15)+"px";
+heart.style.pointerEvents="none";
+heart.style.transition="6s linear";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.style.transform="translateY(-120vh)";
+heart.style.opacity="0";
+
+},50);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+},350);
+}else{
+
+alert("فكري تاني يا وردتي ❤️");
+
+}
+
+
+}
+let text="شكراً إنك أحلى حاجة حصلتلي في حياتي ❤️";
+let i=0;
+
+function writeText(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(writeText,80);
+
+}
+
+}
+
+// هيشتغل بعد الوصول للنهاية
+setInterval(()=>{
+
+let h=document.createElement("div");
+
+h.innerHTML="❤️";
+
+h.style.position="fixed";
+h.style.left=Math.random()*100+"vw";
+h.style.bottom="-30px";
+h.style.fontSize="30px";
+h.style.pointerEvents="none";
+h.style.transition="6s linear";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+
+h.style.transform="translateY(-120vh)";
+h.style.opacity="0";
+
+},50);
+
+setTimeout(()=>{
+
+h.remove();
+
+},6000);
+
+},400);
+const style=document.createElement("style");
+style.innerHTML=`
+
+@keyframes endPop{
+0%{
+transform:scale(0);
+opacity:0;
+}
+70%{
+transform:scale(1.08);
+}
+100%{
+transform:scale(1);
+opacity:1;
+}
+}
+
+`;
+document.head.appendChild(style);
+setInterval(()=>{
+
+let rose=document.createElement("div");
+
+rose.innerHTML="🌹";
+
+rose.style.position="fixed";
+rose.style.top="-50px";
+rose.style.left=Math.random()*100+"vw";
+rose.style.fontSize=(25+Math.random()*20)+"px";
+rose.style.pointerEvents="none";
+rose.style.transition="7s linear";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+
+rose.style.transform="translateY(120vh) rotate(720deg)";
+rose.style.opacity="0";
+
+},50);
+
+setTimeout(()=>{
+
+rose.remove();
+
+},7000);
+
+},700);
+setInterval(()=>{
+
+let star=document.createElement("div");
+
+star.innerHTML="✨";
+
+star.style.position="fixed";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.fontSize="20px";
+star.style.opacity="0";
+
+document.body.appendChild(star);
+
+star.animate([
+{opacity:0,transform:"scale(0)"},
+{opacity:1,transform:"scale(1.5)"},
+{opacity:0,transform:"scale(0)"}
+],{
+
+duration:1800
+
+});
+
+setTimeout(()=>{
+
+star.remove();
+
+},1800);
+
+},350);
+setInterval(()=>{
+
+let ring=document.getElementById("ring");
+
+if(ring){
+
+ring.animate([
+
+{transform:"scale(1) rotate(0deg)"},
+
+{transform:"scale(1.3) rotate(20deg)"},
+
+{transform:"scale(1) rotate(0deg)"}
+
+],{
+
+duration:1200
+
+});
+
+}
+
+},1800);
+function fireworks(){
+
+for(let i=0;i<80;i++){
+
+let f=document.createElement("div");
+
+f.innerHTML=["🎆","✨","🎉","💖"][Math.floor(Math.random()*4)];
+
+f.style.position="fixed";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+f.style.fontSize=(20+Math.random()*25)+"px";
+f.style.pointerEvents="none";
+f.style.zIndex="99999";
+
+document.body.appendChild(f);
+
+f.animate([
+{transform:"scale(0)",opacity:0},
+{transform:"scale(1.6)",opacity:1},
+{transform:"scale(0)",opacity:0}
+],{
+
+duration:2000,
+iterations:1
+
+});
+
+setTimeout(()=>{
+
+f.remove();
+
+},2000);
+
+}
+
+}
+</script>
+
+</body>
+</html>
